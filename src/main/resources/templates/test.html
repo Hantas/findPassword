@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link type="text/css" href="css/findPassword.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+        <button id="getEmailCode" onclick="setTime()">获取邮箱验证码</button>
+        <script>
+            var countdown = 60;
+            function setTime() {
+                var obj = document.getElementById("getEmailCode");
+                if (countdown == 0) {
+                    obj.removeAttribute("disabled");
+                    obj.innerHTML = "获取邮箱验证码";
+                    countdown = 60;
+                    return;
+                } else {
+                    obj.setAttribute("disabled", true);
+                    obj.innerHTML = "重新发送(" + countdown + ")";
+                    countdown--;
+                }
+                //设置setTime每秒执行一次
+                setTimeout(function () {
+                        setTime()
+                    }
+                    , 1000)
+            }
+        </script>
+
+</body>
+</html>

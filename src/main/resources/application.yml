@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=student
+    username: sa
+    password: sa12345
+  mail:
+    host: smtp.qq.com
+    username: 2247072438@qq.com
+    password: vipczogslfglebii
+    port: 465
+    protocol: smtps
+
+mail:
+  fromMail:
+    addr: 2247072438@qq.com
+
+server:
+  port: 9090

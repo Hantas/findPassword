@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <style>
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 200%;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .header p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="am-g">
+        <h1>
+            学生信息查询
+        </h1>
+    </div>
+    <hr/>
+</div>
+
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <form action="#" th:action="@{/}" th:object="${student}" method="post" class="am-form login-form"
+        onSubmit="return LoginCheck()" name="loginForm">
+    <label>用户名:</label><input type="text" id="sid" name="sid" th:field="*{id}"/>
+    <label>密码:</label><input type="password" id="pwd" name="pwd" th:field="*{password}"/><br/>
+    <div class="am-cf">
+        <input type="submit" value="登 录" id="save" class="am-btn am-btn-primary am-btn-sm am-fl"/>
+        <a href="/findPasswordI">找回密码</a>
+    </div>
+    </form>
+
+</div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    function LoginCheck() {
+        if ($("#sid").val() === "" || $("#pwd").val() === "") {
+            $("#sid").val("");
+            $("#pwd").val("");
+            alert("用户名或密码不能为空!");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>
