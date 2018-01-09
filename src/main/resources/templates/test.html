@@ -1,34 +1,51 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
-    <link type="text/css" href="css/findPassword.css" rel="stylesheet"/>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <title>Title</title>
+    <title>乌云后台登录</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="后台登录" />
 </head>
 <body>
-        <button id="getEmailCode" onclick="setTime()">获取邮箱验证码</button>
-        <script>
-            var countdown = 60;
-            function setTime() {
-                var obj = document.getElementById("getEmailCode");
-                if (countdown == 0) {
-                    obj.removeAttribute("disabled");
-                    obj.innerHTML = "获取邮箱验证码";
-                    countdown = 60;
-                    return;
-                } else {
-                    obj.setAttribute("disabled", true);
-                    obj.innerHTML = "重新发送(" + countdown + ")";
-                    countdown--;
-                }
-                //设置setTime每秒执行一次
-                setTimeout(function () {
-                        setTime()
-                    }
-                    , 1000)
-            }
-        </script>
+<div class="login-form">
+    <div class="top-login">
+        <span><img src="images/group.png" alt=""/></span>
+    </div>
+    <h1>登录</h1>
+    <div class="login-top">
+        <form action="#" th:action="@{/}" th:object="${student}" method="post" class="am-form login-form"
+              onSubmit="return LoginCheck()" name="loginForm">
+            <div class="login-ic">
+                <i ></i>
+                <input type="text" id="sid" name="sid"/>
+                <div class="clear"> </div>
+            </div>
+            <div class="login-ic">
+                <i class="icon"></i>
+                <input type="password" id="pwd" name="pwd"/>
+                <div class="clear"> </div>
+            </div>
 
+            <div class="log-bwn">
+                <input type="submit"  value="Login" />
+                <a id="find" href="/findPasswordI">找回密码</a>
+            </div>
+        </form>
+    </div>
+    <p class="copy">© 2018 ......</p>
+</div>
 </body>
+<script src="js/jquery.min.js"></script>
+<script>
+    function LoginCheck() {
+        if ($("#sid").val() === "" || $("#pwd").val() === "") {
+            $("#sid").val("");
+            $("#pwd").val("");
+            alert("用户名或密码不能为空!");
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

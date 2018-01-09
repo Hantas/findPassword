@@ -49,7 +49,7 @@ public class FindPasswordController {
         if (student != null) {
             session.setAttribute("student", student);
             model.addAttribute("student", student);
-            return "findPasswordII";
+            return "redirect:/findPasswordII";
         }
         return "findPasswordI";
     }
@@ -59,7 +59,7 @@ public class FindPasswordController {
         model.addAttribute("student", session.getAttribute("student"));
         String code = (String) session.getAttribute("code");
         if (emailCode.equals(code)) {
-            return "findPasswordIII";
+            return "redirect:/findPasswordIII";
         }
         return "findPasswordII";
     }
@@ -70,7 +70,7 @@ public class FindPasswordController {
         if (!student.getPassword().equals(newPassword) && newPassword.equals(confirm))
         {
             studentService.updatePasswordById(newPassword, student.getId());
-            return "findPasswordIV";
+            return "redirect:/findPasswordIV";
         }
         return "findPasswordIII";
     }
